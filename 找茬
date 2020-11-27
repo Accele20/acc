@@ -1,0 +1,134 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class App {
+    JPanel myPanel=new JPanel();
+    JLabel label_txt=new JLabel();
+    JLabel label_score=new JLabel();
+    JLabel texta=new JLabel();
+    JLabel texta1=new JLabel();
+    int fenshu,fenshu1,fenshu2,fenshu3,fenshu4,fenshu5,fenshu6,fenshu7,fenshu8;
+    int fen=0;
+    int score,score1,score2,score3,score4,score5,score6,score7,score8;
+    int num=0;
+    boolean st=false;
+    //构造方法
+    public App() {
+        label_txt.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                texta1.setBounds(700,105,500,50);
+                texta1.setText("当前点击坐标："+"x:"+e.getX()+",y:"+e.getY());
+            }
+        });
+        label_txt.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (((e.getX()>=500 && e.getX()<=560) && (e.getY()>=300 && e.getY()<=359))){
+                    score=1;
+                    fenshu=10;
+                    fen=fenshu+fenshu1+fenshu2+fenshu3+fenshu4+fenshu5+fenshu6+fenshu7+fenshu8;
+                    num=score+score1+score2+score3+score4+score5+score6+score7+score8;
+                    label_score.setText("找到"+num+"处,得分为"+fen);
+                    st=true;
+                }if (((e.getX()>=690 && e.getX()<=760) && (e.getY()>=200 && e.getY()<=250))){
+                    score1=1;
+                    fenshu1=10;
+                    fen=fenshu+fenshu1+fenshu2+fenshu3+fenshu4+fenshu5+fenshu6+fenshu7+fenshu8;
+                    num=score+score1+score2+score3+score4+score5+score6+score7+score8;
+                    label_score.setText("找到"+num+"处,得分为"+fen);
+                    st=true;
+                }if (((e.getX()>=810 && e.getX()<=890) && (e.getY()>=251 && e.getY()<=310))){
+                    score2=1;
+                    fenshu2=10;
+                    fen=fenshu+fenshu1+fenshu2+fenshu3+fenshu4+fenshu5+fenshu6+fenshu7+fenshu8;
+                    num=score+score1+score2+score3+score4+score5+score6+score7+score8;
+                    label_score.setText("找到"+num+"处,得分为"+fen);
+                    st=true;
+                }if (((e.getX()>=870 && e.getX()<=930) && (e.getY()>=312 && e.getY()<=382))){
+                    score3=1;
+                    fenshu3=10;
+                    fen=fenshu+fenshu1+fenshu2+fenshu3+fenshu4+fenshu5+fenshu6+fenshu7+fenshu8;
+                    num=score+score1+score2+score3+score4+score5+score6+score7+score8;
+                    label_score.setText("找到"+num+"处,得分为"+fen);
+                    st=true;
+                }if (((e.getX()>=722 && e.getX()<=785) && (e.getY()>=522 && e.getY()<=565))){
+                    score4=1;
+                    fenshu4=10;
+                    fen=fenshu+fenshu1+fenshu2+fenshu3+fenshu4+fenshu5+fenshu6+fenshu7+fenshu8;
+                    num=score+score1+score2+score3+score4+score5+score6+score7+score8;
+                    label_score.setText("找到"+num+"处,得分为"+fen);
+                    st=true;
+                }if (((e.getX()>=622 && e.getX()<=650) && (e.getY()>=572 && e.getY()<=660))){
+                    score5=1;
+                    fenshu5=10;
+                    fen=fenshu+fenshu1+fenshu2+fenshu3+fenshu4+fenshu5+fenshu6+fenshu7+fenshu8;
+                    num=score+score1+score2+score3+score4+score5+score6+score7+score8;
+                    label_score.setText("找到"+num+"处,得分为"+fen);
+                    st=true;
+                }if (((e.getX()>=750 && e.getX()<=810) && (e.getY()>=620 && e.getY()<=705))){
+                    score6=1;
+                    fenshu6=10;
+                    fen=fenshu+fenshu1+fenshu2+fenshu3+fenshu4+fenshu5+fenshu6+fenshu7+fenshu8;
+                    num=score+score1+score2+score3+score4+score5+score6+score7+score8;
+                    label_score.setText("找到"+num+"处,得分为"+fen);
+                    st=true;
+                }if (((e.getX()>=955 && e.getX()<=990) && (e.getY()>=552 && e.getY()<=665))){
+                    score7=1;
+                    fenshu7=10;
+                    fen=fenshu+fenshu1+fenshu2+fenshu3+fenshu4+fenshu5+fenshu6+fenshu7+fenshu8;
+                    num=score+score1+score2+score3+score4+score5+score6+score7+score8;
+                    label_score.setText("找到"+num+"处,得分为"+fen);
+                    st=true;
+                }if (((e.getX()>=535 && e.getX()<=610) && (e.getY()>=675 && e.getY()<=720))){
+                    score8=1;
+                    fenshu8=10;
+                    fen=fenshu+fenshu1+fenshu2+fenshu3+fenshu4+fenshu5+fenshu6+fenshu7+fenshu8;
+                    num=score+score1+score2+score3+score4+score5+score6+score7+score8;
+                    label_score.setText("找到"+num+"处,得分为"+fen);
+                    st=true;
+                }if (st=false){
+                    fen=fen-5;
+                }
+                if (num==9){
+                    texta.setBounds(270,372,800,50);
+                    texta.setText("恭喜你通关了！得分为："+fen);
+                }
+            }
+        });
+    }
+    //显示窗体方法
+    void go(){
+        texta1.setForeground(Color.red);
+        texta1.setFont(new Font("宋体",Font.BOLD,20));
+        texta.setForeground(Color.red);
+        texta.setFont(new Font("宋体",Font.BOLD,50));
+        label_score.setBounds(50,100,200,50);
+        java.net.URL imgURL = App.class.getResource("4.jpg");
+        label_txt.setIcon(new ImageIcon(imgURL));
+        label_txt.setBounds(0,0,1000,750);
+        label_score.setForeground(Color.red);
+        label_score.setFont(new Font("宋体",Font.BOLD,20));
+        label_score.setText("找到"+num+"处,得分为"+fen);
+        myPanel.add(texta1);
+        myPanel.add(texta);
+        myPanel.add(label_score);
+        myPanel.add(label_txt);
+        JFrame frame = new JFrame("TestGUI");
+        myPanel.setLayout(null);
+        frame.setContentPane(myPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setBounds(100,100,1010,780);
+        //frame.pack();
+        frame.setVisible(true);
+    }
+    public static void main(String[] args) {
+        new App().go();
+    }
+}
