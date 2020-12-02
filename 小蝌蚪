@@ -1,0 +1,65 @@
+import javax.swing.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+public class App2 {
+    JPanel myPanel=new JPanel();
+    JLabel label_txt=new JLabel();
+    JLabel label_goodPlane=new JLabel();
+    JLabel label_mother=new JLabel();
+    JLabel label_t=new JLabel();
+    int CELL=64;
+    //构造方法
+    public App2() {
+        myPanel.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                if (e.getKeyCode() == e.VK_UP) {
+                    label_txt.setBounds(label_txt.getX(),label_txt.getY()-CELL,CELL,CELL);
+                }
+                if (e.getKeyCode() == e.VK_DOWN) {
+                    label_txt.setBounds(label_txt.getX(),label_txt.getY()+CELL,CELL,CELL);
+                }
+                if (e.getKeyCode() == e.VK_LEFT) {
+                    label_txt.setBounds(label_txt.getX()-CELL,label_txt.getY()+CELL,CELL,CELL);
+                }
+                if (e.getKeyCode() == e.VK_RIGHT) {
+                    label_txt.setBounds(label_txt.getX()+CELL,label_txt.getY()+CELL,CELL,CELL);
+                }
+                if (label_txt.getX()+label_txt.getY() ==label_mother.getX()+label_mother.getY()){
+                    label_t.setText("win");
+                }
+            }
+        });
+    }
+    //显示窗体方法
+    void go(){
+        myPanel.setLayout(null);
+        JFrame frame = new JFrame("一个小程序");
+        frame.setContentPane(myPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setBounds(100,100,1040,800);
+        java.net.URL imgURL2 = App.class.getResource("img/son.png");
+        myPanel.add(label_t);
+        label_t.setBounds(200,200,500,500);
+        myPanel.add(label_mother);
+        label_txt.setIcon(new ImageIcon(imgURL2));
+        label_txt.setBounds(((int)(Math.random()*16+1)-1)*64,((int)(Math.random()*12+1)-1)*64,64,64);
+        myPanel.add(label_txt);
+        java.net.URL imgURL3 = App.class.getResource("img/mother.png");
+        label_mother.setIcon(new ImageIcon(imgURL3));
+        label_mother.setBounds(0,0,64,64);
+        myPanel.add(label_mother);
+        label_mother.setBounds(((int)(Math.random()*16+1)-1)*64,((int)(Math.random()*12+1)-1)*64,64,64);
+        java.net.URL imgURL = App.class.getResource("img/background1.png");
+        label_goodPlane.setIcon(new ImageIcon(imgURL));
+        label_goodPlane.setBounds(0,0,1024,768);
+        myPanel.add(label_goodPlane);
+        //frame.pack();
+        frame.setVisible(true);
+    }
+    public static void main(String[] args) {
+        new App2().go();
+    }
+}
