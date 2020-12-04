@@ -13,9 +13,13 @@ public class App {
     JTextArea textArea_UserInput=new JTextArea();
     JLabel label_frog2=new JLabel();
     JLabel label_frog3=new JLabel();
+    JLabel label_jiesu=new JLabel();
     int  score=0;
     int scorc1=0;
+    int shengyu=3;
     int num=1;
+    int sp=0;
+    
     //构造方法
     public App() {
         myPanel.addMouseListener(new MouseAdapter() {
@@ -31,32 +35,57 @@ public class App {
                 super.keyPressed(e);
                 JLabel label=num==1?label_frog1:num==2?label_frog2:label_frog3;
                 textArea_UserInput.append(String.valueOf(e.getKeyChar()));
-                    if (textArea_UserInput.getText().contains("hello")) {
-                        System.out.println("第一步");
-                        label.setBounds(337, 257, 128, 128);
-                        score++;
-                        textArea_UserInput.setText("");
+                if (textArea_UserInput.getText().contains("hello") && sp==0 ) {
+                    System.out.println("第一步");
+                    label.setBounds(337, 257, 128, 128);
+                    score++;
+                    textArea_UserInput.setText("");
+                    scorc1+=10;
+                    label_score.setText("得分："+scorc1+",剩下"+shengyu+"只青蛙");
+                    sp=1;
                 }
                 if(score==1){
-                    if (textArea_UserInput.getText().contains("world")) {
+                    if (textArea_UserInput.getText().contains("world")&&sp==1) {
                         System.out.println("第二步");
                         label.setBounds(222, 79, 128, 128);
                         score++;
                         textArea_UserInput.setText("");
+                        scorc1+=10;
+                        label_score.setText("得分："+scorc1+",剩下"+shengyu+"只青蛙");
+                        sp=2;
                     }
                 }
                 if (score==2){
-                    if (textArea_UserInput.getText().contains("hi")) {
+                    if (textArea_UserInput.getText().contains("hi")&&sp==2) {
                         System.out.println("第三步");
-                        label.setBounds(817, 3, 128, 128);
+                        if (num==1){
+                            label.setBounds(817, 3, 128, 128);
+                        }else if (num==2){
+                            label.setBounds(750, 3, 128, 128);
+                        }else{
+                            label.setBounds(700, 3, 128, 128);
+                        }
+
                         score++;
                         textArea_UserInput.setText("");
+                        scorc1+=10;
+                        label_score.setText("得分："+scorc1+",剩下"+shengyu+"只青蛙");
                         num++;
+                        sp=0;
+                        shengyu--;
                     }
                 }
                 if (score==3){
                     System.out.println("换蛙");
+                    label_score.setText("得分："+scorc1+",剩下"+shengyu+"只青蛙");
                     score=0;
+                }
+                if (shengyu==0){
+                    myPanel.removeAll();
+                    myPanel.add(label_jiesu);
+                    myPanel.add(label_background);
+                    label_jiesu.setText("结束");
+                    myPanel.repaint();
                 }
             }
         });
@@ -70,7 +99,7 @@ public class App {
         java.net.URL imgURL = App.class.getResource("img/background.png");
         label_background.setIcon(new ImageIcon(imgURL));
         label_background.setBounds(0,0,1024,600);
-
+        textArea_UserInput.setVisible(false);
         java.net.URL imgURL2 = App.class.getResource("img/frog.png");
         label_frog1.setIcon(new ImageIcon(imgURL2));
         java.net.URL imgURL3 = App.class.getResource("img/frog.png");
@@ -82,8 +111,13 @@ public class App {
         label_frog2.setBounds(20,430,128,128);
 
         label_frog3.setBounds(40,430,128,128);
-        label_score.setText("得分：");
+        label_score.setFont(new Font("宋体",Font.BOLD,18));
+        label_score.setText("得分："+scorc1+",剩下"+shengyu+"只青蛙");
         label_score.setBounds(400,0,200,50);
+        label_jiesu.setBounds(400,250,200,50);
+        label_jiesu.setFont(new Font("宋体",Font.BOLD,24));
+        label_jiesu.setForeground(Color.RED);
+        myPanel.add(label_jiesu);
         myPanel.add(label_score);
         myPanel.add(label_frog1);
         myPanel.add(label_frog2);
