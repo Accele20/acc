@@ -5,26 +5,31 @@ import java.util.List;
 public class test {
     JPanel myPanel=new JPanel();
     JLabel label_txt=new JLabel();
+    //list
     List<JLabel> label_list=new ArrayList<>();
+    //图片矩阵
     int array2d[][]={
             {1,2,3},
             {4,5,6}
     };
+    //图片张数
     int cnt=0;
+    //固定值
     int cell=128;
     //构造方法
     public test() {
+        //循环图片
         for (int i = 0; i <=5; i++) {
-            label_list.add(new JLabel());
-            java.net.URL imgURL = test.class.getResource("img/nezha_"+String.valueOf(i)+".png");
-            label_list.get(i).setIcon(new ImageIcon(imgURL));
+            label_list.add(new JLabel());//添加list
+            java.net.URL imgURL = test.class.getResource("img/nezha_"+String.valueOf(i)+".png");//获取图片
+            label_list.get(i).setIcon(new ImageIcon(imgURL));//显示图片
         }
 //          双重for循环，可以设置x，y坐标，还可以添加mypanel元素。
-        for (int row = 0; row < array2d.length; row++) {
-            for (int column = 0; column < array2d[0].length; column++) {
-                label_list.get(cnt).setBounds(column*cell,row*cell,cell,cell);
-                myPanel.add(label_list.get(cnt));
-                cnt++;
+        for (int row = 0; row < array2d.length; row++) {//获取X轴循环
+            for (int column = 0; column < array2d[0].length; column++) {//获取Y轴循环
+                label_list.get(cnt).setBounds(column*cell,row*cell,cell,cell);//设置图片位置大小
+                myPanel.add(label_list.get(cnt));//添加显示图片
+                cnt++;//循环一次+1，输出下一张图片
             }
         }
 
