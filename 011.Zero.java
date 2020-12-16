@@ -7,12 +7,14 @@ public class Zero {
 //                    0在左边界
                     if(column==0){
 
+
                     }
 //                   非左边界
                     else{
                         int c=array2d[row][column];
                         array2d[row][column]=array2d[row][column-1];
                         array2d[row][column-1]=c;
+                        break;
                     }
 
                 }
@@ -21,14 +23,16 @@ public class Zero {
 //        遍历结束
 
     }
-    void goRight(int array2d[][]){
+    void goRight(int array2d[][]){//跳格
         for (int row = 0; row < array2d.length; row++) {
-            for (int column = 0; column < array2d[0].length-1; column++) {
+            for (int column = 0; column < array2d[0].length; column++) {
                 if(array2d[row][column]==0){
-                    if(column==array2d[0].length){ }else {
-                        int c=array2d[row][column];
-                        array2d[row][column]=array2d[row][column+1];
-                        array2d[row][column+1]=c;
+                    if(column==array2d[0].length-1){ }else {
+                        int c=0;
+                        c=array2d[row][column+1];
+                        array2d[row][column]=c;
+                        array2d[row][column+1]=0;
+                        break;
                     }
                 }
             }
@@ -43,12 +47,13 @@ public class Zero {
                         int c=array2d[row][column];
                         array2d[row][column]=array2d[row-1][column];
                         array2d[row-1][column]=c;
+                        break;
                     }
                 }
             }
         }
     }
-    void goDown(int array2d[][]){
+    void goDown(int array2d[][]){//跳格
         for (int row = 0; row < array2d.length; row++) {
             for (int column = 0; column < array2d[0].length; column++) {
                 if(array2d[row][column]==0){
@@ -56,6 +61,7 @@ public class Zero {
                         int c=array2d[row][column];
                         array2d[row][column]=array2d[row+1][column];
                         array2d[row+1][column]=c;
+                        break;
                     }
                 }
             }
